@@ -1,0 +1,5 @@
+
+additionalRepositories:
+  - url: https://github.com/christianfuentes01/moodle-docker1/branches
+    # checkoutLocation is relative to /workspaces
+    checkoutLocation: dockerRepo
