@@ -3,3 +3,6 @@ additionalRepositories:
     # checkoutLocation is relative to /workspaces
     checkoutLocation: dockerRepo
 
+
+workspaceLocation: moodle1/main.code-workspace
+
