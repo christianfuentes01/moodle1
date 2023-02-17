@@ -6,7 +6,6 @@ additionalRepositories:
 
 workspaceLocation: moodle1/main.code-workspace
 
-
 tasks:
   - name: dockerRepo 
     before: |
@@ -14,8 +13,10 @@ tasks:
     init: | 
       export MOODLE_DOCKER_WWWROOT=../moodle1
       export MOODLE_DOCKER_DB=pgsql
+      export MOODLE_DOCKER_WEB_HOST=$(gp url 8000)
       cp config.docker-template.php $MOODLE_DOCKER_WWWROOT/config.php
       bin/moodle-docker-compose up -d
       bin/moodle-docker-wait-for-db
     command: |      
       bin/moodle-docker-compose exec webserver php admin/cli/install_database.php --agree-license --fullname="Docker moodle" --shortname="docker_moodle" --summary="Docker moodle site" --adminpass="test" --adminemail="admin@example.com"
+      echo $MOODLE_DOCKER_WEB_HOST
